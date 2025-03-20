@@ -32,7 +32,7 @@ The experiments utilized the following datasets:
 - **[PCBA](https://moleculenet.org/datasets-1)**: PubChem BioAssays from [MoleculeNet](https://moleculenet.org/).
 - **PFAS**: Custom-created dataset from the [PubChem](https://pubchem.ncbi.nlm.nih.gov/) compounds database.
 
-Datasets are located in the `data/` directory or can be generated using provided scripts.
+Datasets are located in the `datasets/` directory or can be generated using provided scripts.
 
 ## Requirements
 
@@ -61,29 +61,70 @@ The following hyperparameters were used during model training:
 - PyTorch >= 2.4.1
 - RDKit
 - NumPy, Pandas, Matplotlib
-```
- -r requirements.txt
+
+Install required Python libraries via:
+```bash
+pip install -r requirements.txt
 ```
 
 ## Usage
+
 ### Training
 To train the LBF model with minGRU, run:
+
+```bash
+python train.py --dataset [PCBA/PFAS] --hidden_size [8/16/64/128/256]
 ```
-python scripts/train.py --dataset [PCBA/PFAS] --hidden_size [8/16/64/128/256]
+
+### Running Experiments
+A script for running multiple experiments with specified parameters is provided:
+
+```bash
+bash run_experiments.sh
 ```
-### Evaluation
-To evaluate trained models, use:
-```
-python scripts/evaluate.py --model_path [PATH_TO_MODEL] --dataset [PCBA/PFAS]
+
+Example content of `run_experiments.sh`:
+
+```bash
+# Experiment configurations
+datasets=("PCBA")
+bf_fp_probs=(0.01 0.001)
+hidden_size=256
+model_types=("MinGRU")
+
+# Other experimental parameters
+epochs=120
+max_seq_length=50
+learning_rate=0.0005
+
+# Experiment execution loop
+for dataset in "${datasets[@]}"; do
+    for model_type in "${model_types[@]}"; do
+        for bf_fp_prob in "${bf_fp_probs[@]}"; do
+            echo "Running experiment: dataset=${dataset}, model=${model_type}, FPR=${bf_fp_prob}, hidden_size=${hidden_size}"
+            python run_model.py \
+                --dataset "${dataset}" \
+                --epochs "${epochs}" \
+                --max_seq_length "${max_seq_length}" \
+                --learning_rate "${learning_rate}" \
+                --bf_fp_prob "${bf_fp_prob}" \
+                --hidden_size "${hidden_size}" \
+                --model_type "${model_type}" \
+                --bidirectional
+            echo "Finished: dataset=${dataset}, model=${model_type}, FPR=${bf_fp_prob}, hidden_size=${hidden_size}"
+            echo "-------------------------------------------------------"
+        done
+    done
+done
 ```
 
 ## Results
-The experimental results demonstrate that our proposed minGRU-based LBF significantly reduces memory usage and maintains comparable inference speed compared to traditional GRU-based methods. Detailed results and analyses are available in the figures/ directory and in the associated publication.
+The experimental results demonstrate that our proposed minGRU-based LBF significantly reduces memory usage and maintains comparable inference speed compared to traditional GRU-based methods. Detailed results and analyses are available in the `figures/` directory and in the associated publication.
 
 ## Citation
 If you use this work in your research, please cite our paper:
 
-```
+```bibtex
 @article{nishida2025lbf,
   title={Efficient Chemical Compounds Search Using Learned Bloom Filter},
   author={Ken Nishida and Katsuhiko Hayashi and Hidetaka Kamigaito and Hiroyuki Shindo},
@@ -94,5 +135,7 @@ If you use this work in your research, please cite our paper:
 
 ## License
 
+This project is licensed under the MIT License. See `LICENSE` for more details.
+
 ## Contact
-For questions or feedback, please open an issue or contact [kenmancf@gmail.com].
+For questions or feedback, please open an issue or contact [kenmancf@gmail.com](mailto:kenmancf@gmail.com).
