@@ -27,10 +27,10 @@ We propose a highly efficient chemical compound search method that integrates a 
 ## Datasets
 The experiments utilized the following datasets:
 
-- PCBA: PubChem BioAssays from MoleculeNet.
-- PFAS: Custom-created dataset from the PubChem compounds database.
+- **[PCBA](https://moleculenet.org/datasets-1)**: PubChem BioAssays from [MoleculeNet](https://moleculenet.org/).
+- **PFAS**: Custom-created dataset from the [PubChem](https://pubchem.ncbi.nlm.nih.gov/) compounds database.
 
-Datasets are located in the data/ directory or can be generated using provided scripts.
+Datasets are located in the `data/` directory or can be generated using provided scripts.
 
 ## Requirements
 
