@@ -13,15 +13,17 @@ We propose a highly efficient chemical compound search method that integrates a 
 ## Repository Structure
 ```plaintext
 .
-├── data/                 # Datasets used in experiments (PCBA, PFAS)
-├── figures/              # Graphs and figures from experiments
-├── models/               # Trained model files
-├── scripts/              # Code for training, evaluating, and reproducing results
-│   ├── train.py
-│   ├── evaluate.py
-│   └── utils.py
-├── requirements.txt      # Required Python libraries
-└── README.md
+├── datasets/              # Datasets used in experiments (PCBA, PFAS)
+├── figures/               # Graphs and figures generated from experiments
+├── results/               # Experimental results and evaluation outputs
+├── savedmodel/            # Saved model checkpoints and trained parameters
+├── backup_filter.py       # Implementation of the backup Bloom Filter
+├── bloom_filter_utils.py  # Utility functions for Bloom Filter operations
+├── pre_filter.py          # Implementation of the minGRU-based pre-filter model
+├── run_model.py           # Script for running inference using trained LBF models
+├── train.py               # Training script for minGRU-based LBF
+├── requirements.txt       # Python dependencies required for the project
+└── README.md              # Project overview, setup, and instructions
 ```
 
 ## Datasets
