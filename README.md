@@ -33,14 +33,34 @@ The experiments utilized the following datasets:
 Datasets are located in the data/ directory or can be generated using provided scripts.
 
 ## Requirements
-- Python >= 3.8
-- PyTorch
+
+### Experimental Environment
+All experiments were performed under the following computing environment:
+
+- **OS**: Ubuntu 22.04 LTS
+- **CPU**: Intel Xeon w5-3423 @ 4.200 GHz (12 cores / 24 threads)
+- **Memory**: 125 GiB
+- **GPU**: NVIDIA RTX A1000 (VRAM: 10 GB)
+- **GCC Version**: 11.4.0
+- **Python Version**: 3.11.5
+- **PyTorch Version**: 2.4.1+cu121
+
+### Hyperparameter Settings
+The following hyperparameters were used during model training:
+
+- **Epochs**: 10
+- **Learning Rate**: \(1 \times 10^{-4}\)
+- **Batch Size**: 1024
+- **Hidden Layer Sizes**: \(\{8, 16, 64, 128, 256\}\)
+- **Maximum Sequence Length**: 50
+
+### Python Libraries
+- Python >= 3.8 (Recommended: 3.11.5)
+- PyTorch >= 2.4.1
 - RDKit
 - NumPy, Pandas, Matplotlib
-- Install required packages via:
-
 ```
-pip install -r requirements.txt
+ -r requirements.txt
 ```
 
 ## Usage
@@ -62,9 +82,9 @@ The experimental results demonstrate that our proposed minGRU-based LBF signific
 If you use this work in your research, please cite our paper:
 
 ```
-@article{nishida2024lbf,
-  title={Efficient Compound Search Using Learned Bloom Filter,
-  author={Your Name and Co-authors},
+@article{nishida2025lbf,
+  title={Efficient Chemical Compounds Search Using Learned Bloom Filter},
+  author={Ken Nishida and Katsuhiko Hayashi and Hidetaka Kamigaito and Hiroyuki Shindo},
   journal={Journal Name},
   year={2025}
 }
