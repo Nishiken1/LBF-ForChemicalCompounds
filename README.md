@@ -69,13 +69,6 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Training
-To train the LBF model with minGRU, run:
-
-```bash
-python train.py --dataset [PCBA/PFAS] --hidden_size [8/16/64/128/256]
-```
-
 ### Running Experiments
 A script for running multiple experiments with specified parameters is provided:
 
