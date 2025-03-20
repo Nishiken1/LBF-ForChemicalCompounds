@@ -1,5 +1,5 @@
 # Efficient Compound Search Using Learned Bloom Filter (LBF)
-
+<img width="813" alt="Image" src="https://github.com/user-attachments/assets/5535de52-ef80-41e9-aad8-364b4ec73ba7" />
 ## Overview
 This repository provides the source code and experimental data related to our research paper titled **"Efficient Compound Search Using Learned Bloom Filter."**
 
