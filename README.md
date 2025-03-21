@@ -29,10 +29,30 @@ We propose a highly efficient chemical compound search method that integrates a 
 ## Datasets
 The experiments utilized the following datasets:
 
-- **[PCBA](https://moleculenet.org/datasets-1)**: PubChem BioAssays from [MoleculeNet](https://moleculenet.org/).
-- **PFAS**: Custom-created dataset from the [PubChem](https://pubchem.ncbi.nlm.nih.gov/) compounds database.
+### [PCBA](https://moleculenet.org/datasets-1) 
+- The PCBA (PubChem BioAssay) dataset was downloaded from [MoleculeNet](https://moleculenet.org/), a benchmark suite for molecular machine learning.
+- Each compound in PCBA is associated with multiple bioassay annotations. For this experiment, we selected a single bioassay for binary classification, specifically the one with the largest number of positive samples to ensure class balance.
+- We formatted the data as CSV with two columns: smiles (the molecular structure) and active (1 for active, 0 for inactive).
 
-Datasets are located in the `datasets/` directory or can be generated using provided scripts.
+**Example**:
+```
+smiles,active
+CC(C)O,1
+CCCBr,0
+```
+
+### [PubChem](https://pubchem.ncbi.nlm.nih.gov/)
+- The positive examples for PFAS were downloaded from [PubChem’s classification system](https://pubchem.ncbi.nlm.nih.gov/classification/#hid=72), under the PFAS category.
+- Negative examples were randomly sampled from PubChem’s compound database, excluding known PFAS compounds.
+- The PFAS dataset was created by merging these positive and negative examples.
+- We formatted the data as CSV with two columns: smiles (the molecular structure) and active (1 for active, 0 for inactive).
+
+**Example**:
+```
+smiles,active
+C(F)(F)C(F)(F)F,1
+CCCN,0
+```
 
 ## Requirements
 
