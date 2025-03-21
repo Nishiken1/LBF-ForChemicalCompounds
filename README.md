@@ -148,7 +148,7 @@ If you use this work in your research, please cite our paper:
 
 ## License
 
-This project is licensed under the MIT License. See `LICENSE` for more details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## Contact
 For questions or feedback, please open an issue or contact [kenmancf@gmail.com](mailto:kenmancf@gmail.com).
